@@ -20,8 +20,8 @@ class PhoneBook extends Component {
   };
 
   filterUser = () => {
-    const { name, filter } = this.state;
-    return name.filter(names => names.text.toLowerCase().includes(filter.toLowerCase()));
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   };
 
   deleteUser = id => {
@@ -34,13 +34,13 @@ class PhoneBook extends Component {
 
   render() {
     const { filter, contacts } = this.state;
-    // const visibleUser = this.filterUser();
+    const visibleUser = this.filterUser();
     return (
       <div>
         <h1>PhoneBook</h1>
         <Form addToList={this.addToList} />
         <Filter value={filter} onChangeFilter={this.changeFilter} />
-        <Contacts contacts={contacts} deleteContact={this.deleteUser} />
+        <Contacts contacts={visibleUser} deleteContact={this.deleteUser} />
       </div>
     );
   }
