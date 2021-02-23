@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 const Filter = ({ value, onChangeFilter }) => {
   return (
     <div>
+      <p>Find contact by name</p>
       <input
         type="text"
-        placeholder="search contact"
+        placeholder="Find"
         value={value}
         onChange={e => onChangeFilter(e.target.value)}
       />
