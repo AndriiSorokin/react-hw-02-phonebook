@@ -23,8 +23,17 @@ class Form extends Component {
       id: uuidv4(),
     };
     this.props.addToList(singleContact);
+    this.reset();
     console.log(singleContact);
   };
+
+  reset = () => {
+    this.setState({
+      name: '',
+      phone: '',
+    });
+  };
+
   render() {
     const { name, phone } = this.state;
     return (

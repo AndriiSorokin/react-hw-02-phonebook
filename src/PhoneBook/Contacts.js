@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Contacts = ({ contacts }) => {
+const Contacts = ({ contacts, deleteContact }) => {
   console.log(contacts);
   return (
     <div>
@@ -9,6 +9,9 @@ const Contacts = ({ contacts }) => {
         {contacts.map(contact => (
           <li key={contact.id}>
             {contact.name} : {contact.phone}
+            <button onClick={() => deleteContact(contact.id)} type="button">
+              delete
+            </button>
           </li>
         ))}
       </ul>
