@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Form from './Form';
 import Contacts from './Contacts';
 import Filter from './Filter';
@@ -13,7 +12,12 @@ class PhoneBook extends Component {
   };
 
   addToList = contact => {
-    this.setState(prev => ({ contacts: [...prev.contacts, contact] }));
+    const { name } = contact;
+    if (this.state.contacts.every(contact => !contact.name.includes(name))) {
+      this.setState(prev => ({ contacts: [...prev.contacts, contact] }));
+    } else {
+      alert(`${name} is alredy contact!`);
+    }
   };
 
   changeFilter = filter => {
@@ -46,13 +50,5 @@ class PhoneBook extends Component {
     );
   }
 }
-
-PhoneBook.propTypes = {
-  addToList: PropTypes.func,
-  value: PropTypes.string,
-  onChangeFilter: PropTypes.func,
-  contacts: PropTypes.array,
-  deleteContact: PropTypes.func,
-};
 
 export default PhoneBook;
