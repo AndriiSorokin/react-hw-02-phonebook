@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from '../PhoneBook/PhoneBook.module.css';
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
-    <div>
+    <div className={style.form}>
       <p>Find contact by name</p>
       <input
         type="text"
@@ -15,6 +16,9 @@ const Filter = ({ value, onChangeFilter }) => {
   );
 };
 
-Filter.propTypes = {};
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChangeFilter: PropTypes.func.isRequired,
+};
 
 export default Filter;

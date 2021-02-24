@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import style from '../PhoneBook/PhoneBook.module.css';
 
 class Form extends Component {
   state = {
@@ -37,7 +38,7 @@ class Form extends Component {
   render() {
     const { name, phone } = this.state;
     return (
-      <form onSubmit={this.submitHandler} autoComplete="off">
+      <form className={style.form} onSubmit={this.submitHandler} autoComplete="off">
         <input
           onChange={this.inputHandler}
           placeholder="Enter name"
@@ -52,7 +53,9 @@ class Form extends Component {
           name="phone"
           value={phone}
         ></input>
-        <button type="submit">Add contacts</button>
+        <button className={style.btn} type="submit">
+          Add contacts
+        </button>
       </form>
     );
   }

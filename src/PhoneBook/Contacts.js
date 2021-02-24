@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from '../PhoneBook/PhoneBook.module.css';
 
 const Contacts = ({ contacts, deleteContact }) => {
   console.log(contacts);
@@ -11,7 +12,11 @@ const Contacts = ({ contacts, deleteContact }) => {
             <span>
               {contact.name} : {contact.phone}
             </span>
-            <button onClick={() => deleteContact(contact.id)} type="button">
+            <button
+              className={style.btnDelete}
+              onClick={() => deleteContact(contact.id)}
+              type="button"
+            >
               delete
             </button>
           </li>
@@ -21,6 +26,9 @@ const Contacts = ({ contacts, deleteContact }) => {
   );
 };
 
-Contacts.propTypes = {};
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
 
 export default Contacts;

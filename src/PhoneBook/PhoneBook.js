@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 import Contacts from './Contacts';
 import Filter from './Filter';
+import style from '../PhoneBook/PhoneBook.module.css';
 
 class PhoneBook extends Component {
   state = {
@@ -36,16 +37,22 @@ class PhoneBook extends Component {
     const { filter, contacts } = this.state;
     const visibleUser = this.filterUser();
     return (
-      <div>
+      <div className={style.container}>
         <h1>PhoneBook</h1>
         <Form addToList={this.addToList} />
-        <Filter value={filter} onChangeFilter={this.changeFilter} />
+        {contacts.length > 2 ? <Filter value={filter} onChangeFilter={this.changeFilter} /> : ''}
         <Contacts contacts={visibleUser} deleteContact={this.deleteUser} />
       </div>
     );
   }
 }
 
-PhoneBook.propTypes = {};
+PhoneBook.propTypes = {
+  addToList: PropTypes.func,
+  value: PropTypes.string,
+  onChangeFilter: PropTypes.func,
+  contacts: PropTypes.array,
+  deleteContact: PropTypes.func,
+};
 
 export default PhoneBook;
